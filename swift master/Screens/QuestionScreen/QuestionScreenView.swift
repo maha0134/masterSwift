@@ -20,6 +20,7 @@ struct QuestionScreenView: View {
 			
 			Text(question.question)
 				.padding(.top, 10)
+			
 			OptionView(options: question.choices, correctOption: question.correctChoice)
 			
 		}
