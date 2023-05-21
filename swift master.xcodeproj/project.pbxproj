@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799082A1A705B006B58DC /* swift_masterApp.swift */; };
-		4A67990B2A1A705B006B58DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67990A2A1A705B006B58DC /* ContentView.swift */; };
+		4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67990A2A1A705B006B58DC /* HomeScreenView.swift */; };
 		4A67990D2A1A705D006B58DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990C2A1A705D006B58DC /* Assets.xcassets */; };
 		4A6799102A1A705D006B58DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */; };
 		4A6799182A1A738F006B58DC /* questionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799172A1A738F006B58DC /* questionBank.swift */; };
 		4A67991B2A1A7602006B58DC /* QuestionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991A2A1A7602006B58DC /* QuestionDetail.swift */; };
+		4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A6799052A1A705B006B58DC /* swift master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A6799082A1A705B006B58DC /* swift_masterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_masterApp.swift; sourceTree = "<group>"; };
-		4A67990A2A1A705B006B58DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4A67990A2A1A705B006B58DC /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		4A67990C2A1A705D006B58DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A6799172A1A738F006B58DC /* questionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionBank.swift; sourceTree = "<group>"; };
 		4A67991A2A1A7602006B58DC /* QuestionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetail.swift; sourceTree = "<group>"; };
+		4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +57,9 @@
 		4A6799072A1A705B006B58DC /* swift master */ = {
 			isa = PBXGroup;
 			children = (
+				4A67991C2A1A796B006B58DC /* Screens */,
 				4A6799192A1A75E5006B58DC /* Models */,
 				4A6799082A1A705B006B58DC /* swift_masterApp.swift */,
-				4A67990A2A1A705B006B58DC /* ContentView.swift */,
 				4A6799162A1A7371006B58DC /* Resources */,
 				4A67990C2A1A705D006B58DC /* Assets.xcassets */,
 				4A67990E2A1A705D006B58DC /* Preview Content */,
@@ -87,6 +89,23 @@
 				4A67991A2A1A7602006B58DC /* QuestionDetail.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4A67991C2A1A796B006B58DC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4A67991D2A1A797A006B58DC /* HomeScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4A67991D2A1A797A006B58DC /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4A67990A2A1A705B006B58DC /* HomeScreenView.swift */,
+				4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */,
+			);
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A67990B2A1A705B006B58DC /* ContentView.swift in Sources */,
+				4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */,
 				4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */,
 				4A67991B2A1A7602006B58DC /* QuestionDetail.swift in Sources */,
 				4A6799182A1A738F006B58DC /* questionBank.swift in Sources */,
+				4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

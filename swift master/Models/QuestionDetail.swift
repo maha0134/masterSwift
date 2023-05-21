@@ -11,7 +11,7 @@ struct QuestionBank: Codable {
 	var questions: [Question]
 }
 
-struct Question: Codable {
+struct Question: Codable, Hashable {
 	var question: String
 	var choices: [String]
 	var correctChoice: Int
@@ -24,5 +24,3 @@ struct Question: Codable {
 		case difficulty
 	}
 }
-
-
