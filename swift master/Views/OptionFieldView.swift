@@ -10,22 +10,24 @@ import SwiftUI
 struct OptionFieldView: View {
 	var option: String
 	@Binding var selectedOption: String
-	
+	var selected: Bool { selectedOption == option	}
 	var body: some View {
 		HStack {
-				Image(systemName: "circle")
-				.background(Color.white)
-				
-				Text(option)
-				Spacer()
-			}
+			Image(systemName: selected ? "circle.inset.filled" : "circle")
+			Text(option)
+			Spacer()
+		}
 		.padding()
-		.background(Color.gray)
-    }
+		.border(.black)
+		.background()
+		.onTapGesture {
+			selectedOption = option
+		}
+	}
 }
 
 struct OptionFieldView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		OptionFieldView(option: "test", selectedOption: .constant("test"))
-    }
+	}
 }

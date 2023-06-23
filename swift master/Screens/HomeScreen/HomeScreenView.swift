@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-	var questions = Questions()
+	var questions = Questions().questionBank
 	@State var currentQuestion: Int = 0
 	let languages: [String] = ["Swift/SwiftUI"]
 	@State var difficulty: Int = 0
@@ -18,7 +18,7 @@ struct HomeScreenView: View {
 			
 			Text("Swift Master")
 				.font(.title)
-			Text("")
+
 			Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
 				.padding()
 			
@@ -32,7 +32,7 @@ struct HomeScreenView: View {
 			}
 			.pickerStyle(.segmented)
 			
-			if let questions = questions.questionBank {
+			if let questions {
 				NavigationLink("Begin Quiz") {
 					QuestionScreenView(question: questions.questions[currentQuestion], questionNumber: currentQuestion)
 						.navigationBarBackButtonHidden(true)

@@ -12,7 +12,7 @@
 		4A67990D2A1A705D006B58DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990C2A1A705D006B58DC /* Assets.xcassets */; };
 		4A6799102A1A705D006B58DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */; };
 		4A6799182A1A738F006B58DC /* questionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799172A1A738F006B58DC /* questionBank.swift */; };
-		4A67991B2A1A7602006B58DC /* QuestionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991A2A1A7602006B58DC /* QuestionDetail.swift */; };
+		4A67991B2A1A7602006B58DC /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991A2A1A7602006B58DC /* QuestionBank.swift */; };
 		4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */; };
 		4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799212A1A8080006B58DC /* QuestionScreenView.swift */; };
 		4A6799252A1A9265006B58DC /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799242A1A9265006B58DC /* OptionView.swift */; };
@@ -26,7 +26,7 @@
 		4A67990C2A1A705D006B58DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A6799172A1A738F006B58DC /* questionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionBank.swift; sourceTree = "<group>"; };
-		4A67991A2A1A7602006B58DC /* QuestionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetail.swift; sourceTree = "<group>"; };
+		4A67991A2A1A7602006B58DC /* QuestionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBank.swift; sourceTree = "<group>"; };
 		4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		4A6799212A1A8080006B58DC /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		4A6799242A1A9265006B58DC /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		4A6799192A1A75E5006B58DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A67991A2A1A7602006B58DC /* QuestionDetail.swift */,
+				4A67991A2A1A7602006B58DC /* QuestionBank.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 				4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */,
 				4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */,
 				4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */,
-				4A67991B2A1A7602006B58DC /* QuestionDetail.swift in Sources */,
+				4A67991B2A1A7602006B58DC /* QuestionBank.swift in Sources */,
 				4A6799182A1A738F006B58DC /* questionBank.swift in Sources */,
 				4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */,
 			);
@@ -336,10 +336,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"swift master/Preview Content\"";
-				DEVELOPMENT_TEAM = QLKDNUK9DD;
+				DEVELOPMENT_TEAM = 3A9B57WGTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -354,6 +355,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mocha.swift-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,10 +367,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"swift master/Preview Content\"";
-				DEVELOPMENT_TEAM = QLKDNUK9DD;
+				DEVELOPMENT_TEAM = 3A9B57WGTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -383,6 +386,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mocha.swift-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

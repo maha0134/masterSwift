@@ -1,5 +1,5 @@
 //
-//  QuestionDetail.swift
+//  QuestionBank.swift
 //  swift master
 //
 //  Created by AKSHAY MAHAJAN on 2023-05-21.
