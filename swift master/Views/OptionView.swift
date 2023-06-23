@@ -23,6 +23,6 @@ struct OptionView: View {
 
 struct OptionView_Previews: PreviewProvider {
 	static var previews: some View {
-		OptionView(options: (Questions().questionBank?.questions[0].choices)!, correctOption: 0)
+		OptionView(options: (HomeScreenViewModel().questionBank?.questions[0].choices)!, correctOption: 0)
 	}
 }

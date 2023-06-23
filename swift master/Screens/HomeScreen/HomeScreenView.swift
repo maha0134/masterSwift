@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-	var questions = Questions().questionBank
-	@State var currentQuestion: Int = 0
-	let languages: [String] = ["Swift/SwiftUI"]
-	@State var difficulty: Int = 0
-	@State var cancellationRequested = false
-
+	@StateObject var vm = HomeScreenViewModel()
+	
 	var body: some View {
 		NavigationStack {
 			
@@ -24,35 +20,39 @@ struct HomeScreenView: View {
 				.padding()
 			
 			Text("Choose a difficulty level: ")
-			
-			Picker("Level", selection: $difficulty) {
+			//TODO: Select based on difficulty and randomize
+			Picker("Level", selection: $vm.difficulty) {
 				Text("Easy").tag(0)
 				Text("Medium").tag(1)
 				Text("Expert").tag(2)
 				Text("Random").tag(3)
 			}
+			.padding()
 			.pickerStyle(.segmented)
 			
-			if let questions {
+			if let questions = vm.questionBank?.questions {
 				NavigationLink("Begin Quiz") {
-					QuestionScreenView(question: questions.questions[currentQuestion], questionNumber: currentQuestion, cancellationRequested: $cancellationRequested)
+					QuestionScreenView(question: questions[vm.currentQuestion], questionNumber: vm.currentQuestion, cancellationRequested: $vm.cancellationRequested)
 						.navigationBarBackButtonHidden(true)
 						.toolbar {
 							ToolbarItem(placement: .bottomBar) {
 								HStack {
+									Button("Cancel Quiz") {
+										vm.cancellationRequested = true
+										vm.currentQuestion = 0
+									}
+									
+									Spacer()
+									
 									Button("Next") {
-										currentQuestion += 1
+										//TODO: Handle last question/total questions
+										vm.currentQuestion += 1
 									}
 									.padding(7)
 									.background(Color.pink)
 									.foregroundColor(.black)
 									.cornerRadius(5)
 									.shadow(radius: 2)
-									
-									Button("Cancel Quiz") {
-										cancellationRequested = true
-										currentQuestion = 0
-									}
 								}
 							}
 						}
@@ -64,8 +64,6 @@ struct HomeScreenView: View {
 				.shadow(radius: 2)
 				.padding(.top, 30)
 			}
-			
-			Spacer()
 		}
 		.padding()
 	}
@@ -73,6 +71,6 @@ struct HomeScreenView: View {
 
 struct HomeScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		HomeScreenView(difficulty: 0)
+		HomeScreenView()
 	}
 }

@@ -11,9 +11,12 @@ class QuestionDetails: ObservableObject {
 	
 }
 
-struct Questions {
+class HomeScreenViewModel: ObservableObject {
 	var questionBank: QuestionBank?
-	
+	@Published var currentQuestion: Int = 0
+	@Published var difficulty: Int = 0
+	@Published var cancellationRequested = false
+	@Published var score = 0
 	init() {
 		let jsonDecoder = JSONDecoder()
 		let questionBankDecoded = try? jsonDecoder.decode(QuestionBank.self, from: questionBankData!)

@@ -12,19 +12,22 @@ struct QuestionScreenView: View {
 	var questionNumber: Int
 	@Binding var cancellationRequested: Bool
 	@Environment(\.dismiss) var dismiss
+	
 	var body: some View {
 		VStack {
+			//TODO: Take care of question numbers
 			Text("Question - \(questionNumber + 1) / 10")
-				.padding()
+			
 			HStack {
 				Spacer()
-				Text("Time: 00:00")
+				Text("Time Left: 00:00")
 			}
+			.padding()
 			
 			Text(question.question)
-				.padding(.top, 10)
 			
 			OptionView(options: question.choices, correctOption: question.correctChoice)
+				.padding()
 			
 			Spacer()
 		}
@@ -40,6 +43,6 @@ struct QuestionScreenView: View {
 
 struct QuestionScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		QuestionScreenView(question: (Questions().questionBank?.questions[0])!, questionNumber: 1, cancellationRequested: .constant(false))
+		QuestionScreenView(question: (HomeScreenViewModel().questionBank?.questions[0])!, questionNumber: 0, cancellationRequested: .constant(false))
 	}
 }
