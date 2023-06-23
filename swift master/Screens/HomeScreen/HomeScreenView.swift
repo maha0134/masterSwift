@@ -10,30 +10,19 @@ import SwiftUI
 struct HomeScreenView: View {
 	var questions = Questions()
 	@State var currentQuestion: Int = 0
-	let languages: [String] = ["Swift/SwiftUI", "JavaScript", "React", "React Native"]
-	//	let languages: [String] = ["Swift/SwiftUI"]
+	let languages: [String] = ["Swift/SwiftUI"]
 	@State var difficulty: Int = 0
 	
 	var body: some View {
 		NavigationStack {
 			
-			Text("Master Swift")
+			Text("Swift Master")
 				.font(.title)
-			
-			Text("Welcome to Master Swift!")
-				.font(.headline)
+			Text("")
+			Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
 				.padding()
 			
-			Text("Select a language:")
-			
-			ForEach(languages, id: \.self) { language in
-				Text(language)
-					.padding(10)
-					.background(Color.green)
-			}
-			
 			Text("Choose a difficulty level: ")
-				.padding(.top, 20)
 			
 			Picker("Level", selection: $difficulty) {
 				Text("Easy").tag(0)
@@ -44,16 +33,22 @@ struct HomeScreenView: View {
 			.pickerStyle(.segmented)
 			
 			if let questions = questions.questionBank {
-				NavigationLink("Begin Test") {
+				NavigationLink("Begin Quiz") {
 					QuestionScreenView(question: questions.questions[currentQuestion], questionNumber: currentQuestion)
 						.navigationBarBackButtonHidden(true)
 						.toolbar {
 							ToolbarItem(placement: .bottomBar) {
+								
 								Button("Next") {
 									currentQuestion += 1
 								}
+								.padding(7)
+								.background(Color.pink)
+								.foregroundColor(.black)
+								.cornerRadius(5)
+								.shadow(radius: 2)
+								
 							}
-							
 						}
 				}
 				.padding(10)

@@ -10,10 +10,11 @@ import SwiftUI
 struct QuestionScreenView: View {
 	var question: Question
 	var questionNumber: Int
-    var body: some View {
+	var body: some View {
 		VStack {
+			Text("Question - \(questionNumber + 1) / 10")
+				.padding()
 			HStack {
-				Text("Q-\(questionNumber)")
 				Spacer()
 				Text("Time: 00:00")
 			}
@@ -23,13 +24,14 @@ struct QuestionScreenView: View {
 			
 			OptionView(options: question.choices, correctOption: question.correctChoice)
 			
+			Spacer()
 		}
 		.padding()
-    }
+	}
 }
 
 struct QuestionScreenView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		QuestionScreenView(question: (Questions().questionBank?.questions[0])!, questionNumber: 1)
-    }
+	}
 }

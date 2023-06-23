@@ -14,10 +14,13 @@ struct OptionFieldView: View {
 	var body: some View {
 		HStack {
 				Image(systemName: "circle")
+				.background(Color.white)
+				
 				Text(option)
 				Spacer()
 			}
 		.padding()
+		.background(Color.gray)
     }
 }
 
