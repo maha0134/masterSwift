@@ -12,7 +12,8 @@ struct HomeScreenView: View {
 	@State var currentQuestion: Int = 0
 	let languages: [String] = ["Swift/SwiftUI"]
 	@State var difficulty: Int = 0
-	
+	@State var cancellationRequested = false
+
 	var body: some View {
 		NavigationStack {
 			
@@ -34,20 +35,25 @@ struct HomeScreenView: View {
 			
 			if let questions {
 				NavigationLink("Begin Quiz") {
-					QuestionScreenView(question: questions.questions[currentQuestion], questionNumber: currentQuestion)
+					QuestionScreenView(question: questions.questions[currentQuestion], questionNumber: currentQuestion, cancellationRequested: $cancellationRequested)
 						.navigationBarBackButtonHidden(true)
 						.toolbar {
 							ToolbarItem(placement: .bottomBar) {
-								
-								Button("Next") {
-									currentQuestion += 1
+								HStack {
+									Button("Next") {
+										currentQuestion += 1
+									}
+									.padding(7)
+									.background(Color.pink)
+									.foregroundColor(.black)
+									.cornerRadius(5)
+									.shadow(radius: 2)
+									
+									Button("Cancel Quiz") {
+										cancellationRequested = true
+										currentQuestion = 0
+									}
 								}
-								.padding(7)
-								.background(Color.pink)
-								.foregroundColor(.black)
-								.cornerRadius(5)
-								.shadow(radius: 2)
-								
 							}
 						}
 				}
