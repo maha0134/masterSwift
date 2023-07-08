@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestionScreenView: View {
 	var question: Question
 	var questionNumber: Int
+	@Binding var selectedOption: String
 	@Binding var cancellationRequested: Bool
 	@Environment(\.dismiss) var dismiss
 	
@@ -17,16 +18,11 @@ struct QuestionScreenView: View {
 		VStack {
 			//TODO: Take care of question numbers
 			Text("Question - \(questionNumber + 1) / 10")
-			
-			HStack {
-				Spacer()
-				Text("Time Left: 00:00")
-			}
-			.padding()
+				.padding()
 			
 			Text(question.question)
 			
-			OptionView(options: question.choices, correctOption: question.correctChoice)
+			OptionView(options: question.choices, correctOption: question.correctChoice, selectedOption: $selectedOption)
 				.padding()
 			
 			Spacer()
@@ -36,6 +32,7 @@ struct QuestionScreenView: View {
 			if newValue {
 				dismiss()
 				cancellationRequested = false
+				selectedOption = ""
 			}
 		}
 	}
@@ -43,6 +40,6 @@ struct QuestionScreenView: View {
 
 struct QuestionScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		QuestionScreenView(question: (HomeScreenViewModel().questionBank?.questions[0])!, questionNumber: 0, cancellationRequested: .constant(false))
+		QuestionScreenView(question: (HomeScreenViewModel().questionBank?.questions[0])!, questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
 	}
 }

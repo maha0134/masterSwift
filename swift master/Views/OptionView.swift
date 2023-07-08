@@ -10,7 +10,7 @@ import SwiftUI
 struct OptionView: View {
 	var options: [String]
 	var correctOption: Int
-	@State var selectedOption = ""
+	@Binding var selectedOption: String
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -23,6 +23,6 @@ struct OptionView: View {
 
 struct OptionView_Previews: PreviewProvider {
 	static var previews: some View {
-		OptionView(options: (HomeScreenViewModel().questionBank?.questions[0].choices)!, correctOption: 0)
+		OptionView(options: (HomeScreenViewModel().questionBank?.questions[0].choices)!, correctOption: 0, selectedOption: .constant("let"))
 	}
 }

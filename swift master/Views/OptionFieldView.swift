@@ -18,7 +18,7 @@ struct OptionFieldView: View {
 			Spacer()
 		}
 		.padding()
-		.border(.black)
+		.border(.gray, width: 0.25)
 		.background()
 		.onTapGesture {
 			selectedOption = option

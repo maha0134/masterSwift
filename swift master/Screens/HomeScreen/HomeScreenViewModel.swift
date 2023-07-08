@@ -13,10 +13,14 @@ class QuestionDetails: ObservableObject {
 
 class HomeScreenViewModel: ObservableObject {
 	var questionBank: QuestionBank?
-	@Published var currentQuestion: Int = 0
+	@Published var currentQuestionNumber: Int = 0
 	@Published var difficulty: Int = 0
-	@Published var cancellationRequested = false
-	@Published var score = 0
+	@Published var cancellationRequested: Bool = false
+	@Published var score: Int = 0
+	@Published var isAlertActive: Bool = false
+	@Published var selectedOption = ""
+	@Published var correctAnswerSelected: Bool = false
+	@Published var currentCorrectAnswer: String = ""
 	init() {
 		let jsonDecoder = JSONDecoder()
 		let questionBankDecoded = try? jsonDecoder.decode(QuestionBank.self, from: questionBankData!)
