@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuestionScreenView: View {
-	var question: Question
+	var questions: [Question]
 	var questionNumber: Int
 	@Binding var selectedOption: String
 	@Binding var cancellationRequested: Bool
@@ -17,12 +17,12 @@ struct QuestionScreenView: View {
 	var body: some View {
 		VStack {
 			//TODO: Take care of question numbers
-			Text("Question - \(questionNumber + 1) / 10")
+			Text("Question - \(questionNumber + 1) / \(questions.count)")
 				.padding()
 			
-			Text(question.question)
+			Text(questions[questionNumber].question)
 			
-			OptionView(options: question.choices, correctOption: question.correctChoice, selectedOption: $selectedOption)
+			OptionView(options: questions[questionNumber].choices, correctOption: questions[questionNumber].correctChoice, selectedOption: $selectedOption)
 				.padding()
 			
 			Spacer()
@@ -32,7 +32,6 @@ struct QuestionScreenView: View {
 			if newValue {
 				dismiss()
 				cancellationRequested = false
-				selectedOption = ""
 			}
 		}
 	}
@@ -40,6 +39,6 @@ struct QuestionScreenView: View {
 
 struct QuestionScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		QuestionScreenView(question: (HomeScreenViewModel().questions[0]), questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
+		QuestionScreenView(questions: HomeScreenViewModel().questions, questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
 	}
 }

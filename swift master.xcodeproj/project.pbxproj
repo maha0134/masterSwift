@@ -103,9 +103,9 @@
 		4A67991C2A1A796B006B58DC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4AAC9D252A5AC6E400E0241B /* ResultsScreen */,
 				4A6799202A1A806A006B58DC /* QuestionScreen */,
 				4A67991D2A1A797A006B58DC /* HomeScreen */,
-				4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -134,6 +134,14 @@
 				4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4AAC9D252A5AC6E400E0241B /* ResultsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */,
+			);
+			path = ResultsScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

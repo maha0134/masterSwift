@@ -11,7 +11,9 @@ struct QuestionBank: Codable {
 	var questions: [Question]
 }
 
-struct Question: Codable, Hashable {
+struct Question: Codable, Hashable, Identifiable {
+	var id = UUID()
+	
 	var question: String
 	var choices: [String]
 	var correctChoice: Int

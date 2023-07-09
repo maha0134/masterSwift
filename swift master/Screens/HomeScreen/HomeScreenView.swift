@@ -46,14 +46,14 @@ struct HomeScreenView: View {
 			
 			.navigationDestination(isPresented: $vm.showQuiz) {
 				//TODO: Send Vm instead
-				QuestionScreenView(question: vm.questions[vm.currentQuestionNumber], questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
+				QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
 					.navigationBarBackButtonHidden(true)
 					.toolbar {
 						ToolbarItem(placement: .bottomBar) {
 							HStack {
 								Button("Cancel Quiz") {
 									vm.cancellationRequested = true
-									vm.currentQuestionNumber = 0
+									clearStates()
 								}
 								
 								Spacer()
@@ -114,9 +114,19 @@ struct HomeScreenView_Previews: PreviewProvider {
 extension HomeScreenView {
 	
 	func generateQuiz() {
+		clearStates()
+		//Pull out questions from the questionbank having the desired difficulty
 		vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
 		vm.showQuiz = true
-		print(vm.questions)
+	}
+	
+	//Clear everything about previous attempts
+	func clearStates() {
+		vm.score = 0
+		vm.currentQuestionNumber = 0
+		vm.correctAnswerSelected = false
+		vm.currentCorrectAnswer = ""
+		vm.selectedOption = ""
 	}
 	
 	func checkCorrectAnswer() {
