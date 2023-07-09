@@ -12,7 +12,8 @@ class QuestionDetails: ObservableObject {
 }
 
 class HomeScreenViewModel: ObservableObject {
-	var questionBank: QuestionBank?
+//	var questionBank: QuestionBank?
+	var questions = [Question]()
 	@Published var currentQuestionNumber: Int = 0
 	@Published var difficulty: Int = 0
 	@Published var cancellationRequested: Bool = false
@@ -26,7 +27,7 @@ class HomeScreenViewModel: ObservableObject {
 		let questionBankDecoded = try? jsonDecoder.decode(QuestionBank.self, from: questionBankData!)
 		
 		if let questionBankDecoded {
-			self.questionBank = questionBankDecoded
+			self.questions = questionBankDecoded.questions
 		}
 	}
 }

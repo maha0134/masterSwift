@@ -31,41 +31,40 @@ struct HomeScreenView: View {
 			.padding()
 			.pickerStyle(.segmented)
 			
-			if let questions = vm.questionBank?.questions {
-				NavigationLink("Begin Quiz") {
-					QuestionScreenView(question: questions[vm.currentQuestionNumber], questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
-						.navigationBarBackButtonHidden(true)
-						.toolbar {
-							ToolbarItem(placement: .bottomBar) {
-								HStack {
-									Button("Cancel Quiz") {
-										vm.cancellationRequested = true
-										vm.currentQuestionNumber = 0
-									}
-									
-									Spacer()
-									
-									Button("Next") {
-										//TODO: Handle last question/total questions
-										vm.isAlertActive = true
-										checkCorrectAnswer()
-									}
-									.padding(7)
-									.background(Color.pink)
-									.foregroundColor(.black)
-									.cornerRadius(5)
-									.shadow(radius: 2)
+			NavigationLink("Begin Quiz") {
+				//TODO: Send Vm instead
+				QuestionScreenView(question: vm.questions[vm.currentQuestionNumber], questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
+					.navigationBarBackButtonHidden(true)
+					.toolbar {
+						ToolbarItem(placement: .bottomBar) {
+							HStack {
+								Button("Cancel Quiz") {
+									vm.cancellationRequested = true
+									vm.currentQuestionNumber = 0
 								}
+								
+								Spacer()
+								
+								Button("Next") {
+									//TODO: Handle last question/total questions
+									vm.isAlertActive = true
+									checkCorrectAnswer()
+								}
+								.padding(7)
+								.background(Color.pink)
+								.foregroundColor(.black)
+								.cornerRadius(5)
+								.shadow(radius: 2)
 							}
 						}
-				}
-				.padding(10)
-				.background(Color.pink)
-				.foregroundColor(.black)
-				.cornerRadius(5)
-				.shadow(radius: 2)
-				.padding(.top, 30)
+					}
 			}
+			.padding(10)
+			.background(Color.pink)
+			.foregroundColor(.black)
+			.cornerRadius(5)
+			.shadow(radius: 2)
+			.padding(.top, 30)
 		}
 		
 		.alert(Text(vm.correctAnswerSelected ? "Bravo!" : "Oops!"), isPresented: $vm.isAlertActive, actions: {
@@ -95,15 +94,15 @@ struct HomeScreenView: View {
 
 extension HomeScreenView {
 	func checkCorrectAnswer() {
-		if let questionBank = vm.questionBank {
-			let currentQuestion = questionBank.questions[vm.currentQuestionNumber]
-			let correctAnswer = currentQuestion.choices[currentQuestion.correctChoice]
-			if correctAnswer == vm.selectedOption {
-				vm.correctAnswerSelected = true
-			} else {
-				vm.correctAnswerSelected = false
-			}
-			vm.currentCorrectAnswer = correctAnswer
+		
+		let currentQuestion = vm.questions[vm.currentQuestionNumber]
+		let correctAnswer = currentQuestion.choices[currentQuestion.correctChoice]
+		if correctAnswer == vm.selectedOption {
+			vm.correctAnswerSelected = true
+			vm.score += 1
+		} else {
+			vm.correctAnswerSelected = false
 		}
+		vm.currentCorrectAnswer = correctAnswer
 	}
 }
