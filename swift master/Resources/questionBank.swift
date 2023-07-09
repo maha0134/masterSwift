@@ -15,31 +15,31 @@ let questionBankData =
    "question": "What is the keyword used to define a constant in Swift?",
    "choices": ["let", "var", "constant", "define"],
    "correct_choice": 0,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "What is the operator used for optional unwrapping in Swift?",
    "choices": ["?", "!", "??", "&&"],
    "correct_choice": 1,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "Which collection type in Swift does not allow duplicate elements?",
    "choices": ["Array", "Set", "Dictionary", "Tuple"],
    "correct_choice": 1,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "What is the correct syntax to define a function in Swift?",
    "choices": ["func", "function", "def", "method"],
    "correct_choice": 0,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "What is the type annotation for a String in Swift?",
    "choices": ["String", "str", "text", "StringType"],
    "correct_choice": 0,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "Which control flow statement is used to repeat a block of code multiple times in Swift?",
@@ -51,7 +51,7 @@ let questionBankData =
    "question": "What is the protocol-oriented programming feature in Swift called?",
    "choices": ["Interfaces", "Classes", "Inheritance", "Protocols"],
    "correct_choice": 3,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "What is the purpose of the didSet observer in Swift?",
@@ -75,7 +75,7 @@ let questionBankData =
    "question": "Which SwiftUI container view is used to stack views horizontally?",
    "choices": ["HStack", "VStack", "ZStack", "Group"],
    "correct_choice": 0,
-   "difficulty": 1
+   "difficulty": 0
   },
   {
    "question": "What is the purpose of the @State property wrapper in SwiftUI?",

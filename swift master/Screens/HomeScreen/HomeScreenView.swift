@@ -31,7 +31,20 @@ struct HomeScreenView: View {
 			.padding()
 			.pickerStyle(.segmented)
 			
-			NavigationLink("Begin Quiz") {
+			Button {
+				print("button clicked!")
+				generateQuiz()
+			} label: {
+				Text("Begin Quiz")
+			}
+			.padding(10)
+			.background(Color.pink)
+			.foregroundColor(.black)
+			.cornerRadius(5)
+			.shadow(radius: 2)
+			.padding(.top, 30)
+			
+			.navigationDestination(isPresented: $vm.showQuiz) {
 				//TODO: Send Vm instead
 				QuestionScreenView(question: vm.questions[vm.currentQuestionNumber], questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
 					.navigationBarBackButtonHidden(true)
@@ -44,11 +57,15 @@ struct HomeScreenView: View {
 								}
 								
 								Spacer()
-								
-								Button("Next") {
-									//TODO: Handle last question/total questions
+								Button {
 									vm.isAlertActive = true
 									checkCorrectAnswer()
+								} label: {
+									if vm.currentQuestionNumber == vm.questions.count - 1 {
+										Text("Finish")
+									} else {
+										Text("Next")
+									}
 								}
 								.padding(7)
 								.background(Color.pink)
@@ -59,17 +76,16 @@ struct HomeScreenView: View {
 						}
 					}
 			}
-			.padding(10)
-			.background(Color.pink)
-			.foregroundColor(.black)
-			.cornerRadius(5)
-			.shadow(radius: 2)
-			.padding(.top, 30)
 		}
 		
 		.alert(Text(vm.correctAnswerSelected ? "Bravo!" : "Oops!"), isPresented: $vm.isAlertActive, actions: {
 			Button(role: .none) {
-				vm.currentQuestionNumber += 1
+				if vm.currentQuestionNumber == vm.questions.count - 1 {
+					vm.showQuiz = false
+					vm.resultsPresented = true
+				} else {
+					vm.currentQuestionNumber += 1
+				}
 				vm.correctAnswerSelected = false
 				vm.currentCorrectAnswer = ""
 			} label: {
@@ -83,16 +99,26 @@ struct HomeScreenView: View {
 			}
 		})
 		.padding()
-	}
-	
-	struct HomeScreenView_Previews: PreviewProvider {
-		static var previews: some View {
-			HomeScreenView()
+		.fullScreenCover(isPresented: $vm.resultsPresented) {
+			ResultsScreenView(vm: vm)
 		}
 	}
 }
 
+struct HomeScreenView_Previews: PreviewProvider {
+	static var previews: some View {
+		HomeScreenView()
+	}
+}
+
 extension HomeScreenView {
+	
+	func generateQuiz() {
+		vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
+		vm.showQuiz = true
+		print(vm.questions)
+	}
+	
 	func checkCorrectAnswer() {
 		
 		let currentQuestion = vm.questions[vm.currentQuestionNumber]
@@ -105,4 +131,6 @@ extension HomeScreenView {
 		}
 		vm.currentCorrectAnswer = correctAnswer
 	}
+	
+	
 }

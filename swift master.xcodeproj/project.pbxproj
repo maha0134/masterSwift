@@ -17,6 +17,7 @@
 		4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799212A1A8080006B58DC /* QuestionScreenView.swift */; };
 		4A6799252A1A9265006B58DC /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799242A1A9265006B58DC /* OptionView.swift */; };
 		4A6799272A1A9D2C006B58DC /* OptionFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */; };
+		4AAC9D242A5AC2A100E0241B /* ResultsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		4A6799212A1A8080006B58DC /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		4A6799242A1A9265006B58DC /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionFieldView.swift; sourceTree = "<group>"; };
+		4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				4A6799202A1A806A006B58DC /* QuestionScreen */,
 				4A67991D2A1A797A006B58DC /* HomeScreen */,
+				4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A6799272A1A9D2C006B58DC /* OptionFieldView.swift in Sources */,
+				4AAC9D242A5AC2A100E0241B /* ResultsScreenView.swift in Sources */,
 				4A6799252A1A9265006B58DC /* OptionView.swift in Sources */,
 				4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */,
 				4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */,
