@@ -10,6 +10,7 @@ import SwiftUI
 struct ResultsScreenView: View {
 	@ObservedObject var vm: HomeScreenViewModel
 	@State var answersVisible: Bool = false
+	@State var buttonLabel: String = "See all answers"
 
 	var body: some View {
 		ScrollView {
@@ -23,11 +24,18 @@ struct ResultsScreenView: View {
 			
 			Text("You've got \(vm.score) out of \(vm.questions.count) questions right")
 			
-			Button(action: {
+			Button {
+				withAnimation {
 					answersVisible.toggle()
-			}, label: {
+					if buttonLabel == "See all answers" {
+						buttonLabel = "Hide answers"
+					} else {
+						buttonLabel = "See all answers"
+					}
+				}
+			} label: {
 				HStack {
-					Text(answersVisible ? "Hide answers" : "See all answers")
+					Text(buttonLabel)
 						.animation(nil)
 						.foregroundColor(.pink)
 						.fontWeight(.bold)
@@ -37,7 +45,7 @@ struct ResultsScreenView: View {
 						.font(.title2)
 						.rotationEffect(.degrees(answersVisible ? 90 : 0))
 				}
-			})
+			}
 			.padding()
 			
 			if answersVisible {
@@ -60,15 +68,9 @@ struct ResultsScreenView: View {
 			Button {
 				vm.resultsPresented = false
 			} label: {
-				Label("Back to Home", systemImage: "house.fill")
+				HomeButton()
 			}
-			.padding(15)
-			.border(.black)
-			.foregroundColor(.white)
-			.background(.black)
-			.cornerRadius(5)
-			.shadow(radius: 5)
-			.padding(.top, 25)
+			
 		}
 	}
 }

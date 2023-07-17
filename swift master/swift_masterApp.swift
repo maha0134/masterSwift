@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct swift_masterApp: App {
+	// register app delegate for Firebase setup
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     var body: some Scene {
         WindowGroup {
 			HomeScreenView()
