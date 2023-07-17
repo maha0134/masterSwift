@@ -116,12 +116,18 @@ extension HomeScreenView {
 	func generateQuiz() {
 		clearStates()
 		//Pull out questions from the questionbank having the desired difficulty
-		vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
+		if vm.difficulty < 3 {
+			vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
+		} else {
+			let questionCount = 10
+			vm.questions = Array(vm.allQuestions.prefix(10))
+		}
 		vm.showQuiz = true
 	}
 	
 	//Clear everything about previous attempts
 	func clearStates() {
+		vm.allQuestions.shuffle()
 		vm.score = 0
 		vm.currentQuestionNumber = 0
 		vm.correctAnswerSelected = false
