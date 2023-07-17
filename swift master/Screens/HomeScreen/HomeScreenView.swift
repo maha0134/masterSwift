@@ -33,7 +33,7 @@ struct HomeScreenView: View {
 			
 			Button {
 				print("button clicked!")
-				generateQuiz()
+				vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
 			} label: {
 				Text("Begin Quiz")
 			}

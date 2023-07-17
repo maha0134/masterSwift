@@ -6,13 +6,10 @@
 //
 
 import Foundation
-
-class QuestionDetails: ObservableObject {
-	
-}
+import Firebase
+import FirebaseFirestoreSwift
 
 class HomeScreenViewModel: ObservableObject {
-//	var questionBank: QuestionBank?
 	var allQuestions = [Question]()
 	var questions = [Question]()
 	@Published var currentQuestionNumber: Int = 0
@@ -25,13 +22,19 @@ class HomeScreenViewModel: ObservableObject {
 	@Published var correctAnswerSelected: Bool = false
 	@Published var currentCorrectAnswer: String = ""
 	@Published var resultsPresented: Bool = false
-	init() {
-		let jsonDecoder = JSONDecoder()
-		let questionBankDecoded = try? jsonDecoder.decode(QuestionBank.self, from: questionBankData!)
-		
-		if let questionBankDecoded {
-			self.allQuestions = questionBankDecoded.questions
-			self.questions = self.allQuestions
+	
+	func readFromFirebase(for difficulty: Int, with completion: @escaping () -> Void ) {
+		let db = Firestore.firestore()
+		db.collection("QuestionBank").document("SwiftQuestions").getDocument(as: QuestionBank.self) { result in
+			switch result {
+				case .success(let questionBank):
+					self.allQuestions = questionBank.questions
+					self.questions = questionBank.questions
+					completion()
+
+				case .failure(let err):
+					print("Couldn't fetch from database, please try again: \(err)")
+			}
 		}
 	}
 }
