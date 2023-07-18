@@ -23,6 +23,7 @@
 		4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799212A1A8080006B58DC /* QuestionScreenView.swift */; };
 		4A6799252A1A9265006B58DC /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799242A1A9265006B58DC /* OptionView.swift */; };
 		4A6799272A1A9D2C006B58DC /* OptionFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */; };
+		4A9E74D42A6677D9006051CE /* BeginQuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */; };
 		4AAC9D242A5AC2A100E0241B /* ResultsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		4A6799212A1A8080006B58DC /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		4A6799242A1A9265006B58DC /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionFieldView.swift; sourceTree = "<group>"; };
+		4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginQuizButton.swift; sourceTree = "<group>"; };
 		4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 				4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */,
 				4A6383112A65221900AC2D8F /* HomeButton.swift */,
 				4A6383472A65880C00AC2D8F /* ProgressIndicatorView.swift */,
+				4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				4A6799252A1A9265006B58DC /* OptionView.swift in Sources */,
 				4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */,
 				4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */,
+				4A9E74D42A6677D9006051CE /* BeginQuizButton.swift in Sources */,
 				4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */,
 				4A6383122A65221900AC2D8F /* HomeButton.swift in Sources */,
 				4A67991B2A1A7602006B58DC /* QuestionBank.swift in Sources */,

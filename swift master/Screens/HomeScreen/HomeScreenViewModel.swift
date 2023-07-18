@@ -22,6 +22,7 @@ class HomeScreenViewModel: ObservableObject {
 	@Published var correctAnswerSelected: Bool = false
 	@Published var currentCorrectAnswer: String = ""
 	@Published var resultsPresented: Bool = false
+	@Published var showLoader: Bool = false
 	
 	func readFromFirebase(for difficulty: Int, with completion: @escaping () -> Void ) {
 		let db = Firestore.firestore()

@@ -11,72 +11,71 @@ struct HomeScreenView: View {
 	@StateObject var vm = HomeScreenViewModel()
 	
 	var body: some View {
-		
-		NavigationStack {
-			Text("Swift Master")
-				.font(.title)
-			
-			Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
-				.padding()
-			
-			Text("Choose a difficulty level: ")
-				.padding(.top, 25)
-			//TODO: Select based on difficulty and randomize
-			Picker("Level", selection: $vm.difficulty) {
-				Text("Easy").tag(0)
-				Text("Medium").tag(1)
-				Text("Expert").tag(2)
-				Text("Random").tag(3)
-			}
-			.padding()
-			.pickerStyle(.segmented)
-			
-			Button {
-				print("button clicked!")
-				vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
-			} label: {
-				Text("Begin Quiz")
-			}
-			.padding(10)
-			.background(Color.pink)
-			.foregroundColor(.black)
-			.cornerRadius(5)
-			.shadow(radius: 2)
-			.padding(.top, 30)
-			
-			.navigationDestination(isPresented: $vm.showQuiz) {
-				//TODO: Send Vm instead
-				QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
-					.navigationBarBackButtonHidden(true)
-					.toolbar {
-						ToolbarItem(placement: .bottomBar) {
-							HStack {
-								Button("Cancel Quiz") {
-									vm.cancellationRequested = true
-									clearStates()
-								}
-								
-								Spacer()
-								Button {
-									vm.isAlertActive = true
-									checkCorrectAnswer()
-								} label: {
-									if vm.currentQuestionNumber == vm.questions.count - 1 {
-										Text("Finish")
-									} else {
-										Text("Next")
+		ZStack {
+			NavigationStack {
+					Text("Swift Master")
+						.font(.title)
+					
+					Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
+						.padding()
+					
+					Text("Choose a difficulty level: ")
+						.padding(.top, 25)
+					
+					Picker("Level", selection: $vm.difficulty) {
+						Text("Easy").tag(0)
+						Text("Medium").tag(1)
+						Text("Expert").tag(2)
+						Text("Random").tag(3)
+					}
+					.padding()
+					.pickerStyle(.segmented)
+					
+					Button {
+						vm.showLoader = true
+						vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
+					} label: {
+						BeginQuizButton()
+					}
+				
+				.navigationDestination(isPresented: $vm.showQuiz) {
+					//TODO: Send Vm instead
+					QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
+						.navigationBarBackButtonHidden(true)
+						.toolbar {
+							ToolbarItem(placement: .bottomBar) {
+								HStack {
+									Button("Cancel Quiz") {
+										vm.cancellationRequested = true
+										clearStates()
 									}
+									
+									Spacer()
+									Button {
+										vm.isAlertActive = true
+										checkCorrectAnswer()
+									} label: {
+										if vm.currentQuestionNumber == vm.questions.count - 1 {
+											Text("Finish")
+										} else {
+											Text("Next")
+										}
+									}
+									.padding(7)
+									.background(Color.pink)
+									.foregroundColor(.black)
+									.cornerRadius(5)
+									.shadow(radius: 2)
 								}
-								.padding(7)
-								.background(Color.pink)
-								.foregroundColor(.black)
-								.cornerRadius(5)
-								.shadow(radius: 2)
 							}
 						}
-					}
+				}
+			}
+			if vm.showLoader {
+				ProgressIndicatorView()
 			}
 		}
+		.edgesIgnoringSafeArea(.all)
 		
 		.alert(Text(vm.correctAnswerSelected ? "Bravo!" : "Oops!"), isPresented: $vm.isAlertActive, actions: {
 			Button(role: .none) {
@@ -98,7 +97,7 @@ struct HomeScreenView: View {
 				Text("The right answer was: \(vm.currentCorrectAnswer)")
 			}
 		})
-		.padding()
+
 		.fullScreenCover(isPresented: $vm.resultsPresented) {
 			ResultsScreenView(vm: vm)
 		}
@@ -120,8 +119,9 @@ extension HomeScreenView {
 			vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
 		} else {
 			let questionCount = 10
-			vm.questions = Array(vm.allQuestions.prefix(10))
+			vm.questions = Array(vm.allQuestions.prefix(questionCount))
 		}
+		vm.showLoader = false
 		vm.showQuiz = true
 	}
 	

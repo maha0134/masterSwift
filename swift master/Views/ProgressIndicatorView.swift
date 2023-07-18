@@ -11,10 +11,13 @@ struct ProgressIndicatorView: View {
     var body: some View {
 		VStack {
 			ProgressView()
+				.tint(.white)
 			Text("Loading...")
 				.padding()
 		}
-		
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0.9))
+		.foregroundColor(.white)
     }
 }
 
