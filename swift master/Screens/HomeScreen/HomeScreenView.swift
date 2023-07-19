@@ -13,30 +13,30 @@ struct HomeScreenView: View {
 	var body: some View {
 		ZStack {
 			NavigationStack {
-					Text("Swift Master")
-						.font(.title)
-					
-					Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
-						.padding()
-					
-					Text("Choose a difficulty level: ")
-						.padding(.top, 25)
-					
-					Picker("Level", selection: $vm.difficulty) {
-						Text("Easy").tag(0)
-						Text("Medium").tag(1)
-						Text("Expert").tag(2)
-						Text("Random").tag(3)
-					}
+				Text("Swift Master")
+					.font(.title)
+				
+				Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
 					.padding()
-					.pickerStyle(.segmented)
-					
-					Button {
-						vm.showLoader = true
-						vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
-					} label: {
-						BeginQuizButton()
-					}
+				
+				Text("Choose a difficulty level: ")
+					.padding(.top, 25)
+				
+				Picker("Level", selection: $vm.difficulty) {
+					Text("Easy").tag(0)
+					Text("Medium").tag(1)
+					Text("Expert").tag(2)
+					Text("Random").tag(3)
+				}
+				.padding()
+				.pickerStyle(.segmented)
+				
+				Button {
+					vm.showLoader = true
+					vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
+				} label: {
+					BeginQuizButton()
+				}
 				
 				.navigationDestination(isPresented: $vm.showQuiz) {
 					//TODO: Send Vm instead
@@ -97,7 +97,7 @@ struct HomeScreenView: View {
 				Text("The right answer was: \(vm.currentCorrectAnswer)")
 			}
 		})
-
+		
 		.fullScreenCover(isPresented: $vm.resultsPresented) {
 			ResultsScreenView(vm: vm)
 		}
@@ -114,15 +114,17 @@ extension HomeScreenView {
 	
 	func generateQuiz() {
 		clearStates()
-		//Pull out questions from the questionbank having the desired difficulty
+		let questionCount = 10
+		//Pull out 10 questions from the questionbank having the desired difficulty
 		if vm.difficulty < 3 {
-			vm.questions = vm.allQuestions.filter({ $0.difficulty == vm.difficulty })
+				vm.questions = Array(vm.allQuestions
+				.filter { $0.difficulty == vm.difficulty }
+				.prefix(upTo: questionCount))
 		} else {
-			let questionCount = 10
 			vm.questions = Array(vm.allQuestions.prefix(questionCount))
 		}
-		vm.showLoader = false
 		vm.showQuiz = true
+		vm.showLoader = false
 	}
 	
 	//Clear everything about previous attempts
