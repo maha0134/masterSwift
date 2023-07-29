@@ -21,7 +21,9 @@ struct QuestionScreenView: View {
 			
 			Text(questions[questionNumber].question)
 			
-			OptionView(options: questions[questionNumber].choices, correctOption: questions[questionNumber].correctChoice, selectedOption: $selectedOption)
+			OptionView(options: questions[questionNumber].choices,
+					   correctOption: questions[questionNumber].correctChoice,
+					   selectedOption: $selectedOption)
 				.padding()
 			
 			Spacer()
