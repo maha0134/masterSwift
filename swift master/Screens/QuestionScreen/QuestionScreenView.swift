@@ -16,7 +16,6 @@ struct QuestionScreenView: View {
 	
 	var body: some View {
 		VStack {
-			//TODO: Take care of question numbers
 			Text("Question - \(questionNumber + 1) / \(questions.count)")
 				.padding()
 			

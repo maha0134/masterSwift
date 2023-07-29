@@ -39,7 +39,6 @@ struct HomeScreenView: View {
 				}
 				
 				.navigationDestination(isPresented: $vm.showQuiz) {
-					//TODO: Send Vm instead
 					QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
 						.navigationBarBackButtonHidden(true)
 						.toolbar {
