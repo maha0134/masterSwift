@@ -77,7 +77,6 @@ struct HomeScreenView: View {
 			}
 		}
 		.edgesIgnoringSafeArea(.all)
-		
 		.onAppear {
 			Task {
 				vm.showLoader = true

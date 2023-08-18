@@ -64,13 +64,13 @@ struct ResultsScreenView: View {
 					
 				}
 			}
-			
+		}
+		.safeAreaInset(edge: .bottom) {
 			Button {
 				vm.resultsPresented = false
 			} label: {
 				HomeButton()
 			}
-			
 		}
 	}
 }

@@ -49,7 +49,6 @@ class HomeScreenViewModel: ObservableObject {
 			questions = Array(allQuestions.prefix(questionCount))
 		}
 		showQuiz = true
-		showLoader = false
 	}
 	
 	
@@ -75,19 +74,4 @@ class HomeScreenViewModel: ObservableObject {
 		}
 		currentCorrectAnswer = correctAnswer
 	}
-	
-//	func readFromFirebase(for difficulty: Int, with completion: @escaping () -> Void ) {
-//		let db = Firestore.firestore()
-//		db.collection("QuestionBank").document("SwiftQuestions").getDocument(as: QuestionBank.self) { result in
-//			switch result {
-//				case .success(let questionBank):
-//					self.allQuestions = questionBank.questions
-//					self.questions = questionBank.questions
-//					completion()
-//
-//				case .failure(let err):
-//					print("Couldn't fetch from database, please try again: \(err)")
-//			}
-//		}
-//	}
 }
