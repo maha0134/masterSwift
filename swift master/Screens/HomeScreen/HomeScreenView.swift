@@ -16,7 +16,7 @@ struct HomeScreenView: View {
 				Text("Swift Master")
 					.font(.title)
 				
-				Text("Welcome to Swift Master, your one stop destinaton for iOS preparation and landing your next iOS role!")
+				Text("Welcome to Swift Master, your one stop destinaton for tuning your swift skills!")
 					.padding()
 				
 				Text("Choose a difficulty level: ")
@@ -32,12 +32,13 @@ struct HomeScreenView: View {
 				.pickerStyle(.segmented)
 				
 				Button {
-					vm.showLoader = true
-					vm.readFromFirebase(for: vm.difficulty, with: generateQuiz)
+					if !vm.allQuestions.isEmpty {
+						vm.generateQuiz()
+					}
+					
 				} label: {
 					BeginQuizButton()
 				}
-				
 				.navigationDestination(isPresented: $vm.showQuiz) {
 					QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
 						.navigationBarBackButtonHidden(true)
@@ -46,13 +47,14 @@ struct HomeScreenView: View {
 								HStack {
 									Button("Cancel Quiz") {
 										vm.cancellationRequested = true
-										clearStates()
+										vm.clearStates()
 									}
 									
 									Spacer()
+									
 									Button {
 										vm.isAlertActive = true
-										checkCorrectAnswer()
+										vm.checkCorrectAnswer()
 									} label: {
 										if vm.currentQuestionNumber == vm.questions.count - 1 {
 											Text("Finish")
@@ -75,6 +77,14 @@ struct HomeScreenView: View {
 			}
 		}
 		.edgesIgnoringSafeArea(.all)
+		
+		.onAppear {
+			Task {
+				vm.showLoader = true
+				await vm.readFromFirebase()
+				vm.showLoader = false
+			}
+		}
 		
 		.alert(Text(vm.correctAnswerSelected ? "Bravo!" : "Oops!"), isPresented: $vm.isAlertActive, actions: {
 			Button(role: .none) {
@@ -107,47 +117,4 @@ struct HomeScreenView_Previews: PreviewProvider {
 	static var previews: some View {
 		HomeScreenView()
 	}
-}
-
-extension HomeScreenView {
-	
-	func generateQuiz() {
-		clearStates()
-		let questionCount = 10
-		//Pull out 10 questions from the questionbank having the desired difficulty
-		if vm.difficulty < 3 {
-				vm.questions = Array(vm.allQuestions
-				.filter { $0.difficulty == vm.difficulty }
-				.prefix(upTo: questionCount))
-		} else {
-			vm.questions = Array(vm.allQuestions.prefix(questionCount))
-		}
-		vm.showQuiz = true
-		vm.showLoader = false
-	}
-	
-	//Clear everything about previous attempts
-	func clearStates() {
-		vm.allQuestions.shuffle()
-		vm.score = 0
-		vm.currentQuestionNumber = 0
-		vm.correctAnswerSelected = false
-		vm.currentCorrectAnswer = ""
-		vm.selectedOption = ""
-	}
-	
-	func checkCorrectAnswer() {
-		
-		let currentQuestion = vm.questions[vm.currentQuestionNumber]
-		let correctAnswer = currentQuestion.choices[currentQuestion.correctChoice]
-		if correctAnswer == vm.selectedOption {
-			vm.correctAnswerSelected = true
-			vm.score += 1
-		} else {
-			vm.correctAnswerSelected = false
-		}
-		vm.currentCorrectAnswer = correctAnswer
-	}
-	
-	
 }

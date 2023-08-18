@@ -24,18 +24,70 @@ class HomeScreenViewModel: ObservableObject {
 	@Published var resultsPresented: Bool = false
 	@Published var showLoader: Bool = false
 	
-	func readFromFirebase(for difficulty: Int, with completion: @escaping () -> Void ) {
+	@MainActor
+	func readFromFirebase() async {
 		let db = Firestore.firestore()
-		db.collection("QuestionBank").document("SwiftQuestions").getDocument(as: QuestionBank.self) { result in
-			switch result {
-				case .success(let questionBank):
-					self.allQuestions = questionBank.questions
-					self.questions = questionBank.questions
-					completion()
-
-				case .failure(let err):
-					print("Couldn't fetch from database, please try again: \(err)")
-			}
+		do {
+			let response = try await db.collection("QuestionBank").document("SwiftQuestions").getDocument(as: QuestionBank.self)
+			self.allQuestions = response.questions
+			self.questions = response.questions
+		} catch let err {
+			print("Couldn't fetch from database, please try again: \(err)")
 		}
+		
 	}
+	
+	func generateQuiz() {
+		clearStates()
+		let questionCount = 10
+		//Pull out 10 questions from the questionbank having the desired difficulty
+		if difficulty < 3 {
+			questions = Array(allQuestions
+				.filter { $0.difficulty == difficulty }
+				.prefix(upTo: questionCount))
+		} else {
+			questions = Array(allQuestions.prefix(questionCount))
+		}
+		showQuiz = true
+		showLoader = false
+	}
+	
+	
+	//Clear everything about previous attempts
+	func clearStates() {
+		allQuestions.shuffle()
+		score = 0
+		currentQuestionNumber = 0
+		correctAnswerSelected = false
+		currentCorrectAnswer = ""
+		selectedOption = ""
+	}
+	
+	func checkCorrectAnswer() {
+		
+		let currentQuestion = questions[currentQuestionNumber]
+		let correctAnswer = currentQuestion.choices[currentQuestion.correctChoice]
+		if correctAnswer == selectedOption {
+			correctAnswerSelected = true
+			score += 1
+		} else {
+			correctAnswerSelected = false
+		}
+		currentCorrectAnswer = correctAnswer
+	}
+	
+//	func readFromFirebase(for difficulty: Int, with completion: @escaping () -> Void ) {
+//		let db = Firestore.firestore()
+//		db.collection("QuestionBank").document("SwiftQuestions").getDocument(as: QuestionBank.self) { result in
+//			switch result {
+//				case .success(let questionBank):
+//					self.allQuestions = questionBank.questions
+//					self.questions = questionBank.questions
+//					completion()
+//
+//				case .failure(let err):
+//					print("Couldn't fetch from database, please try again: \(err)")
+//			}
+//		}
+//	}
 }
