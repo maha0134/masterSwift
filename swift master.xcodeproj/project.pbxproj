@@ -19,11 +19,13 @@
 		4A67990D2A1A705D006B58DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990C2A1A705D006B58DC /* Assets.xcassets */; };
 		4A6799102A1A705D006B58DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */; };
 		4A67991B2A1A7602006B58DC /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991A2A1A7602006B58DC /* QuestionBank.swift */; };
-		4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */; };
+		4A67991F2A1A79DA006B58DC /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67991E2A1A79DA006B58DC /* TabsViewModel.swift */; };
 		4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799212A1A8080006B58DC /* QuestionScreenView.swift */; };
 		4A6799252A1A9265006B58DC /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799242A1A9265006B58DC /* OptionView.swift */; };
 		4A6799272A1A9D2C006B58DC /* OptionFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */; };
 		4A9E74D42A6677D9006051CE /* BeginQuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */; };
+		4AA348742ACB7CA000EF6C7F /* StatsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA348732ACB7CA000EF6C7F /* StatsScreenView.swift */; };
+		4AA348762ACB7CD800EF6C7F /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA348752ACB7CD800EF6C7F /* TabsView.swift */; };
 		4AAC9D242A5AC2A100E0241B /* ResultsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,11 +40,13 @@
 		4A67990C2A1A705D006B58DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A67990F2A1A705D006B58DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A67991A2A1A7602006B58DC /* QuestionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBank.swift; sourceTree = "<group>"; };
-		4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		4A67991E2A1A79DA006B58DC /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
 		4A6799212A1A8080006B58DC /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		4A6799242A1A9265006B58DC /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		4A6799262A1A9D2C006B58DC /* OptionFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionFieldView.swift; sourceTree = "<group>"; };
 		4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginQuizButton.swift; sourceTree = "<group>"; };
+		4AA348732ACB7CA000EF6C7F /* StatsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScreenView.swift; sourceTree = "<group>"; };
+		4AA348752ACB7CD800EF6C7F /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		4AAC9D232A5AC2A100E0241B /* ResultsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +91,7 @@
 				4A63831C2A65415D00AC2D8F /* AppDelegate.swift */,
 				4A67990C2A1A705D006B58DC /* Assets.xcassets */,
 				4A67990E2A1A705D006B58DC /* Preview Content */,
+				4AA348732ACB7CA000EF6C7F /* StatsScreenView.swift */,
 			);
 			path = "swift master";
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				4AAC9D252A5AC6E400E0241B /* ResultsScreen */,
 				4A6799202A1A806A006B58DC /* QuestionScreen */,
 				4A67991D2A1A797A006B58DC /* HomeScreen */,
+				4AA348772ACB7F6300EF6C7F /* Tabs */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -121,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				4A67990A2A1A705B006B58DC /* HomeScreenView.swift */,
-				4A67991E2A1A79DA006B58DC /* HomeScreenViewModel.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -144,6 +149,15 @@
 				4A9E74D32A6677D9006051CE /* BeginQuizButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4AA348772ACB7F6300EF6C7F /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				4AA348752ACB7CD800EF6C7F /* TabsView.swift */,
+				4A67991E2A1A79DA006B58DC /* TabsViewModel.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		4AAC9D252A5AC6E400E0241B /* ResultsScreen */ = {
@@ -237,13 +251,15 @@
 				4A6799272A1A9D2C006B58DC /* OptionFieldView.swift in Sources */,
 				4AAC9D242A5AC2A100E0241B /* ResultsScreenView.swift in Sources */,
 				4A6799252A1A9265006B58DC /* OptionView.swift in Sources */,
+				4AA348762ACB7CD800EF6C7F /* TabsView.swift in Sources */,
 				4A67990B2A1A705B006B58DC /* HomeScreenView.swift in Sources */,
 				4A6799092A1A705B006B58DC /* swift_masterApp.swift in Sources */,
 				4A9E74D42A6677D9006051CE /* BeginQuizButton.swift in Sources */,
 				4A6799222A1A8080006B58DC /* QuestionScreenView.swift in Sources */,
 				4A6383122A65221900AC2D8F /* HomeButton.swift in Sources */,
+				4AA348742ACB7CA000EF6C7F /* StatsScreenView.swift in Sources */,
 				4A67991B2A1A7602006B58DC /* QuestionBank.swift in Sources */,
-				4A67991F2A1A79DA006B58DC /* HomeScreenViewModel.swift in Sources */,
+				4A67991F2A1A79DA006B58DC /* TabsViewModel.swift in Sources */,
 				4A6383482A65880C00AC2D8F /* ProgressIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

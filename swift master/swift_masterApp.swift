@@ -14,7 +14,7 @@ struct swift_masterApp: App {
 
     var body: some Scene {
         WindowGroup {
-			HomeScreenView()
+			TabsView()
         }
     }
 }

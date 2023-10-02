@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-class HomeScreenViewModel: ObservableObject {
+class TabsViewModel: ObservableObject {
 	var allQuestions = [Question]()
 	var questions = [Question]()
 	@Published var currentQuestionNumber: Int = 0

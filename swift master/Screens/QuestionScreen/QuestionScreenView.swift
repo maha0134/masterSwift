@@ -40,6 +40,6 @@ struct QuestionScreenView: View {
 
 struct QuestionScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		QuestionScreenView(questions: HomeScreenViewModel().questions, questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
+		QuestionScreenView(questions: TabsViewModel().questions, questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
 	}
 }

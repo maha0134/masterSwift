@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ResultsScreenView: View {
-	@ObservedObject var vm: HomeScreenViewModel
+	@ObservedObject var vm: TabsViewModel
 	@State var answersVisible: Bool = false
 	@State var buttonLabel: String = "See all answers"
 
 	var body: some View {
+		
 		ScrollView {
+			
 			Text("Results")
 				.font(.title)
 				.padding()
@@ -77,6 +79,6 @@ struct ResultsScreenView: View {
 
 struct ResultsScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		ResultsScreenView(vm: HomeScreenViewModel())
+		ResultsScreenView(vm: TabsViewModel())
 	}
 }

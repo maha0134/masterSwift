@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-	@StateObject var vm = HomeScreenViewModel()
+	@ObservedObject var vm: TabsViewModel
 	
 	var body: some View {
 		ZStack {
@@ -39,6 +39,7 @@ struct HomeScreenView: View {
 				} label: {
 					BeginQuizButton()
 				}
+				
 				.navigationDestination(isPresented: $vm.showQuiz) {
 					QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
 						.navigationBarBackButtonHidden(true)
@@ -77,13 +78,6 @@ struct HomeScreenView: View {
 			}
 		}
 		.edgesIgnoringSafeArea(.all)
-		.onAppear {
-			Task {
-				vm.showLoader = true
-				await vm.readFromFirebase()
-				vm.showLoader = false
-			}
-		}
 		
 		.alert(Text(vm.correctAnswerSelected ? "Bravo!" : "Oops!"), isPresented: $vm.isAlertActive, actions: {
 			Button(role: .none) {
@@ -114,6 +108,6 @@ struct HomeScreenView: View {
 
 struct HomeScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		HomeScreenView()
+		HomeScreenView(vm: TabsViewModel())
 	}
 }

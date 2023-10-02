@@ -16,7 +16,6 @@ struct HomeButton: View {
 			.background(.black)
 			.cornerRadius(5)
 			.shadow(radius: 5)
-			.padding(.top, 25)
     }
 }
 
