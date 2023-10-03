@@ -7,38 +7,45 @@
 
 import Foundation
 
- typealias ScoreData = (id: String, score: Int)
+struct ScoreData: Codable {
+	var id = UUID().uuidString
+	let score: Int
+}
 
 class UserDefaultsViewModel {
 	private let scores = "scores"
 	
 	
 	func updateStorage(with score: Int) {
-		let id = UUID().uuidString
-		var updatedScore: ScoreData
-		updatedScore.id = id
-		updatedScore.score = score
-		
-		if var storedData = readFromStorage() as? [ScoreData] {
-			storedData.append(updatedScore)
-			writeToStorage(for: storedData)
-		} else {
-			writeToStorage(for: [updatedScore])
-		}
+		var updatedScore = ScoreData(score: score)
+		var storedData = readFromStorage()
+		storedData.append(updatedScore)
+		writeToStorage(for: storedData)
 	}
 	
 	func fetchStorageValues() -> [ScoreData] {
-		if let scores = readFromStorage() as? [ScoreData] {
-			return scores
+		readFromStorage()
+	}
+	
+	private func readFromStorage() -> [ScoreData] {
+		if let data = UserDefaults.standard.data(forKey: scores) {
+			let decoder = JSONDecoder()
+			do {
+				return try decoder.decode([ScoreData].self, from: data)
+			} catch {
+				print("Error decoding scores")
+			}
 		}
 		return []
 	}
 	
-	private func readFromStorage() -> [Any]? {
-		UserDefaults.standard.array(forKey: scores)
-	}
-	
 	private func writeToStorage(for updatedScores: [ScoreData]) {
-		UserDefaults.standard.set(updatedScores, forKey: scores)
+		let encoder = JSONEncoder()
+		do {
+			let data = try encoder.encode(updatedScores)
+			UserDefaults.standard.set(data, forKey: scores)
+		} catch {
+			print("error encoding scores")
+		}
 	}
 }
