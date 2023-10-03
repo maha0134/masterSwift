@@ -10,10 +10,10 @@ import SwiftUI
 struct HomeButton: View {
     var body: some View {
 		Label("Back to Home", systemImage: "house.fill")
+			.fontWeight(.bold)
 			.padding(15)
-			.border(.black)
-			.foregroundColor(.white)
-			.background(.black)
+			.foregroundColor(.pink)
+			.background(.primary)
 			.cornerRadius(5)
 			.shadow(radius: 5)
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeScreenView: View {
 	@ObservedObject var vm: TabsViewModel
+	private let userDefaults = UserDefaultsViewModel()
 	
 	var body: some View {
 		ZStack {
@@ -84,6 +85,7 @@ struct HomeScreenView: View {
 				if vm.currentQuestionNumber == vm.questions.count - 1 {
 					vm.showQuiz = false
 					vm.resultsPresented = true
+					userDefaults.updateStorage(with: vm.score)
 				} else {
 					vm.currentQuestionNumber += 1
 				}
