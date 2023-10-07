@@ -10,7 +10,7 @@ import SwiftUI
 struct BeginQuizButton: View {
 	var body: some View {
 		Text("Begin Quiz")
-			.padding(10)
+			.padding(15)
 			.background(Color.pink)
 			.foregroundColor(.black)
 			.cornerRadius(5)

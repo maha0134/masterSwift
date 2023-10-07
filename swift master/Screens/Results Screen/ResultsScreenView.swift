@@ -18,6 +18,7 @@ struct ResultsScreenView: View {
 			
 			Text("Results")
 				.font(.title)
+				.fontWeight(.bold)
 				.padding()
 			
 			Text("Score: " + String(format: "%.1f", (Float(vm.score) / Float(vm.questions.count) * 100)) + "%")

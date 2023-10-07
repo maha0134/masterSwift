@@ -21,7 +21,7 @@ struct TabsView: View {
 				.tabItem {
 					Label("Stats", systemImage: "chart.bar.xaxis")
 				}
-				.tag(0)
+				.tag(1)
 		}
 		.tint(.pink)
 		.onAppear {

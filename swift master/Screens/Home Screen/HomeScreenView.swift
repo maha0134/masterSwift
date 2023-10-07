@@ -16,9 +16,11 @@ struct HomeScreenView: View {
 			NavigationStack {
 				Text("Swift Master")
 					.font(.title)
+					.fontWeight(.bold)
 				
-				Text("Welcome to Swift Master, your one stop destinaton for tuning your swift skills!")
+				Text("Welcome to Swift Master,\nyour one stop destinaton for tuning your Swift skills!")
 					.padding()
+					.multilineTextAlignment(.center)
 				
 				Text("Choose a difficulty level: ")
 					.padding(.top, 25)
@@ -40,6 +42,8 @@ struct HomeScreenView: View {
 				} label: {
 					BeginQuizButton()
 				}
+				
+				Spacer()
 				
 				.navigationDestination(isPresented: $vm.showQuiz) {
 					QuestionScreenView(questions: vm.questions, questionNumber: vm.currentQuestionNumber, selectedOption: $vm.selectedOption, cancellationRequested: $vm.cancellationRequested)
@@ -74,6 +78,7 @@ struct HomeScreenView: View {
 						}
 				}
 			}
+			.font(.title3)
 			if vm.showLoader {
 				ProgressIndicatorView()
 			}

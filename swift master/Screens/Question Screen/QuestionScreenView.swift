@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct QuestionScreenView: View {
-	var questions: [Question]
-	var questionNumber: Int
+	let questions: [Question]
+	let questionNumber: Int
 	@Binding var selectedOption: String
 	@Binding var cancellationRequested: Bool
 	@Environment(\.dismiss) var dismiss
@@ -24,7 +24,7 @@ struct QuestionScreenView: View {
 			OptionView(options: questions[questionNumber].choices,
 					   correctOption: questions[questionNumber].correctChoice,
 					   selectedOption: $selectedOption)
-				.padding()
+			.padding()
 			
 			Spacer()
 		}
@@ -40,6 +40,6 @@ struct QuestionScreenView: View {
 
 struct QuestionScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		QuestionScreenView(questions: TabsViewModel().questions, questionNumber: 0, selectedOption: .constant("let"), cancellationRequested: .constant(false))
+		QuestionScreenView(questions: [sampleQuestion, sampleQuestion], questionNumber: 0, selectedOption: .constant(""), cancellationRequested: .constant(false))
 	}
 }

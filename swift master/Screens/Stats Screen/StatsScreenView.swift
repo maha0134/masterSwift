@@ -15,7 +15,8 @@ struct StatsScreenView: View {
 			Text("Stats")
 				.font(.title)
 				.fontWeight(.bold)
-			Spacer()
+				.padding(.top)
+			
 			if !scores.isEmpty {
 				Text("Check out your past scores")
 				Chart(scores, id: \.id) { score in
@@ -29,7 +30,8 @@ struct StatsScreenView: View {
 				.chartForegroundStyleScale([
 					"Easy": Color.green,
 					"Medium": Color.blue,
-					"Hard": Color.pink
+					"Hard": Color.pink,
+					"Random": Color.yellow
 				])
 				.chartYScale(domain: [0, 10])
 				.frame(width: 350, height: 250)
@@ -63,7 +65,7 @@ struct StatsScreenView: View {
 					case 2:
 						updatedScore.difficultyLabel = "Hard"
 					default:
-						break
+						updatedScore.difficultyLabel = "Random"
 				}
 				return updatedScore
 			}

@@ -26,3 +26,6 @@ struct Question: Codable, Hashable, Identifiable {
 		case difficulty
 	}
 }
+
+
+let sampleQuestion = Question(question: "What's the current iOS version", choices: ["17","16","15","18"], correctChoice: 0, difficulty: 2)
