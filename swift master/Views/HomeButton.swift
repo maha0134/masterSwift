@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct HomeButton: View {
+	@Environment(\.colorScheme) var colorScheme
     var body: some View {
 		Label("Back to Home", systemImage: "house.fill")
 			.fontWeight(.bold)
 			.padding(15)
 			.foregroundColor(.pink)
-			.background(.primary)
+			.background(colorScheme == .dark ? .white : .black)
 			.cornerRadius(5)
 			.shadow(radius: 5)
     }

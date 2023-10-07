@@ -10,14 +10,15 @@ import Foundation
 struct ScoreData: Codable {
 	var id = UUID().uuidString
 	let score: Int
+	let difficulty: Int
 }
 
 class UserDefaultsViewModel {
 	private let scores = "scores"
 	
 	
-	func updateStorage(with score: Int) {
-		var updatedScore = ScoreData(score: score)
+	func updateStorage(with score: Int, and difficulty: Int) {
+		let updatedScore = ScoreData(score: score, difficulty: difficulty)
 		var storedData = readFromStorage()
 		storedData.append(updatedScore)
 		writeToStorage(for: storedData)

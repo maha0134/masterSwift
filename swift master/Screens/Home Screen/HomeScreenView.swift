@@ -85,7 +85,7 @@ struct HomeScreenView: View {
 				if vm.currentQuestionNumber == vm.questions.count - 1 {
 					vm.showQuiz = false
 					vm.resultsPresented = true
-					userDefaults.updateStorage(with: vm.score)
+					userDefaults.updateStorage(with: vm.score, and: vm.difficulty)
 				} else {
 					vm.currentQuestionNumber += 1
 				}
