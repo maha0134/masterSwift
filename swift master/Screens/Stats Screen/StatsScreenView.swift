@@ -34,7 +34,7 @@ struct StatsScreenView: View {
 				.chartYScale(domain: [0, 10])
 				.frame(width: 350, height: 250)
 				.chartYAxis {
-					AxisMarks(values: .automatic(desiredCount: 5))
+					AxisMarks(position: .leading, values: .automatic(desiredCount: 5))
 				}
 				
 				Spacer()
