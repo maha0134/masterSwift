@@ -11,6 +11,7 @@ struct ScoreData: Codable {
 	var id = UUID().uuidString
 	let score: Int
 	let difficulty: Int
+	var difficultyLabel = ""
 }
 
 class UserDefaultsViewModel {
